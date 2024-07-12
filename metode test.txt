@@ -1,0 +1,39 @@
+public void toStringTest() {
+try {
+assertEquals("toStringTest",name.getMethodName());
+} catch (Throwable t) {
+ec.addError(t);
+}
+String ocekivaniRezultat = "Stan [adresa=Nemanjina, kvadratura=150, cena po kvadratu=100]";
+try {
+String stvarniRezultat = S.toString();
+assertEquals(ocekivaniRezultat,stvarniRezultat);
+}catch (Throwable t) {
+ec.addError(t);
+}
+} 
+
+
+
+
+//////////////////
+
+
+
+@Test
+public void povoljanStanTest2() {
+try {
+assertEquals("povoljanStanTest2",name.getMethodName());
+} catch (Throwable t) {
+ec.addError(t);
+}
+boolean ocekivaniRezultat = false;
+S.setCenaPoKvadratu(4000);
+S.setKvadratura(100000);
+try {
+boolean stvarniRezultat = S.povoljanStan();
+assertEquals(ocekivaniRezultat,stvarniRezultat);
+}catch (Throwable t) {
+ec.addError(t);
+}
+} 

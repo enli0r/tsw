@@ -1,0 +1,19 @@
+class TestRunner {
+public static void main(String[] args) {
+Result result = JUnitCore.runClasses(StanTests.class, APSParametrizedTests.class);
+Logger l = Logger.getLogger(TestRunner.class.toString());
+for(Failure f: result.getFailures()) {
+l.info(f.toString());
+}
+l.info("Vreme"+result.getRunTime());
+l.info("Ukupno Testova"+result.getRunCount());
+l.info("Ukuono Proslih"+(result.getRunCount()-result.getFailureCount()-result.getIgnoreCount()-result.getAssumptionFailureCount()));
+l.info("Ukupno palih"+result.getFailureCount());
+l.info("Ukupno odbijenih"+result.getIgnoreCount());
+l.info("Ukupno dinamicki odbijenih"+result.getAssumptionFailureCount());
+if(result.wasSuccessful())
+l.info("Svi testovi su prosli");
+else
+l.warning("Postoji test koji je pao");
+}
+}

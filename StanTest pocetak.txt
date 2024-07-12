@@ -1,0 +1,25 @@
+public class StanTest {
+
+	public Stan S;
+	
+	@Rule
+	public final TestRule timeout = Timeout.seconds(5);
+	
+	@BeforeClass
+	public static void tProveriOperativniSistem() {
+		Assume.assumeTrue(System.getProperty("os.name").contains("Windows"));
+	}
+	
+	@Rule
+	public final ErrorCollector ec = new ErrorCollector();
+	
+	@Before
+	public void init() {
+		S = new Stan("Nemanjina",150,100);
+	}
+	
+	@Rule
+	public final TestName name = new TestName();
+	
+	@Rule
+	public ExpectedException exception = ExpectedException.none();

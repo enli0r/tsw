@@ -1,0 +1,108 @@
+//GETTER TESTOVI
+	@Test
+	public void getKvadraturaTest() {
+		try {
+			assertEquals("getKvadraturaTest", name.getMethodName());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+		
+		int kvadratura = 150;
+		
+		try {
+			
+			assertEquals(kvadratura, S.getKvdratura());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+	}
+	
+	@Test
+	public void getCenaPoKvadratuTest() {
+		try {
+			assertEquals("getCenaPoKvadratuTest", name.getMethodName());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+		
+		int cenaPoKvadratu = 100;
+		
+		try {
+			assertEquals(cenaPoKvadratu, S.getCenaPoKvadratu());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+	}
+	
+	@Test
+	public void getAdresaTest() {
+		try {
+			assertEquals("getAdresaTest", name.getMethodName());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+		
+		String adresa = "Nemanjina";
+		
+		try {
+			assertEquals(adresa, S.getAdresa());
+		}catch(Throwable t) {
+			ec.addError(t);
+		}
+	}
+
+
+
+//SETTER TESTOVI
+	@Test(expected = RuntimeException.class)
+	public void setKvadraturaTest1() {
+		int kvadratura = 150;
+		assertEquals(kvadratura, S.getKvdratura());
+		S.setKvadratura(-1);
+	}
+	
+	@Test
+	public void setKvadraturaTest2() {
+		int kvadratura = 150;
+		assertEquals(kvadratura, S.getKvdratura());
+		
+		S.setKvadratura(100);
+		int ocekivanaKvadratura = 100;
+		assertEquals(ocekivanaKvadratura, S.getKvdratura());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void setCenaPoKvadratuTest1() {
+		int cenaPoKvad = 100;
+		assertEquals(cenaPoKvad, S.getCenaPoKvadratu());
+		S.setCenaPoKvadratu(-1);
+	}
+	
+	@Test
+	public void setCenaPoKvadratuTest2() {
+		int cenaPoKvad = 100;
+		assertEquals(cenaPoKvad, S.getCenaPoKvadratu());
+		
+		S.setCenaPoKvadratu(150);
+		int novaCenaPoKvadratu = 150;
+		
+		assertEquals(novaCenaPoKvadratu, S.getCenaPoKvadratu());
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void setAdresaTest1() {
+		String adresa = "Nemanjina";
+		assertEquals(adresa, S.getAdresa());
+		S.setAdresa(null);
+	}
+	
+	@Test
+	public void setAdresaTest2() {
+		String adresa = "Nemanjina";
+		assertEquals(adresa, S.getAdresa());
+		
+		String novaAdresa = "Vojvode stepe";
+		S.setAdresa(novaAdresa);
+		
+		assertEquals(novaAdresa, S.getAdresa());
+	}
